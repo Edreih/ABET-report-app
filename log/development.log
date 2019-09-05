@@ -1,0 +1,250 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateAdministrators (20190316003941)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "administrators" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "fname" varchar, "lname" varchar, "title" varchar, "office" varchar, "email" varchar, "phone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190316003941_create_administrators.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190316003941"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateCourses (20190316005849)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "courses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190316005849_create_courses.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190316005849"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateFaculties (20190316072920)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "faculties" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "fname" varchar, "lname" varchar, "title" varchar, "office" varchar, "email" varchar, "phone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190316072920_create_faculties.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190316072920"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateFacultyCourses (20190402041415)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "faculty_courses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "course_id" integer, "faculty_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_69996961f7"
+FOREIGN KEY ("faculty_id")
+  REFERENCES "faculties" ("id")
+)[0m
+  ↳ db/migrate/20190402041415_create_faculty_courses.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_faculty_courses_on_course_id" ON "faculty_courses" ("course_id")[0m
+  ↳ db/migrate/20190402041415_create_faculty_courses.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_faculty_courses_on_faculty_id" ON "faculty_courses" ("faculty_id")[0m
+  ↳ db/migrate/20190402041415_create_faculty_courses.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190402041415"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateCriterions (20190403045929)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "criterions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190403045929_create_criterions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190403045929"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateCourseCriterions (20190406044549)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "course_criterions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "score" float, "course" varchar, "description" varchar, "criterion_threshold_id" integer, "course_id" integer, "criterion_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_529d6a1742"
+FOREIGN KEY ("criterion_threshold_id")
+  REFERENCES "criterion_thresholds" ("id")
+, CONSTRAINT "fk_rails_45575be1ce"
+FOREIGN KEY ("course_id")
+  REFERENCES "courses" ("id")
+, CONSTRAINT "fk_rails_c2bd12aa52"
+FOREIGN KEY ("criterion_id")
+  REFERENCES "criterions" ("id")
+)[0m
+  ↳ db/migrate/20190406044549_create_course_criterions.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_course_criterions_on_criterion_threshold_id" ON "course_criterions" ("criterion_threshold_id")[0m
+  ↳ db/migrate/20190406044549_create_course_criterions.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_course_criterions_on_course_id" ON "course_criterions" ("course_id")[0m
+  ↳ db/migrate/20190406044549_create_course_criterions.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_course_criterions_on_criterion_id" ON "course_criterions" ("criterion_id")[0m
+  ↳ db/migrate/20190406044549_create_course_criterions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190406044549"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateJoinTableFacultyCourse (20190410024846)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "courses_faculties" ("faculty_id" integer NOT NULL, "course_id" integer NOT NULL)[0m
+  ↳ db/migrate/20190410024846_create_join_table_faculty_course.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_courses_faculties_on_faculty_id_and_course_id" ON "courses_faculties" ("faculty_id", "course_id")[0m
+  ↳ db/migrate/20190410024846_create_join_table_faculty_course.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_courses_faculties_on_course_id_and_faculty_id" ON "courses_faculties" ("course_id", "faculty_id")[0m
+  ↳ db/migrate/20190410024846_create_join_table_faculty_course.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190410024846"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to RemoveColumnFromCourseCriterion (20190411032537)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acourse_criterions" ("id" integer NOT NULL PRIMARY KEY, "score" float DEFAULT NULL, "course" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "criterion_threshold_id" integer DEFAULT NULL, "course_id" integer DEFAULT NULL, "criterion_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_acourse_criterions_on_criterion_id" ON "acourse_criterions" ("criterion_id")[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_acourse_criterions_on_course_id" ON "acourse_criterions" ("course_id")[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_acourse_criterions_on_criterion_threshold_id" ON "acourse_criterions" ("criterion_threshold_id")[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acourse_criterions" ("id","score","course","description","criterion_threshold_id","course_id","criterion_id","created_at","updated_at")
+                     SELECT "id","score","course","description","criterion_threshold_id","course_id","criterion_id","created_at","updated_at" FROM "course_criterions"[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "course_criterions"[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "course_criterions" ("id" integer NOT NULL PRIMARY KEY, "score" float DEFAULT NULL, "course" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "course_id" integer DEFAULT NULL, "criterion_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_course_criterions_on_course_id" ON "course_criterions" ("course_id")[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_course_criterions_on_criterion_id" ON "course_criterions" ("criterion_id")[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "course_criterions" ("id","score","course","description","course_id","criterion_id","created_at","updated_at")
+                     SELECT "id","score","course","description","course_id","criterion_id","created_at","updated_at" FROM "acourse_criterions"[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acourse_criterions"[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "course_criterions" ADD "poor" float[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:4
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "course_criterions" ADD "acceptable" float[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "course_criterions" ADD "excellent" float[0m
+  ↳ db/migrate/20190411032537_remove_column_from_course_criterion.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190411032537"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to DropScoreColumnFromCourseCriterion (20190411035247)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acourse_criterions" ("id" integer NOT NULL PRIMARY KEY, "score" float DEFAULT NULL, "course" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "course_id" integer DEFAULT NULL, "criterion_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "poor" float DEFAULT NULL, "acceptable" float DEFAULT NULL, "excellent" float DEFAULT NULL)[0m
+  ↳ db/migrate/20190411035247_drop_score_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_acourse_criterions_on_criterion_id" ON "acourse_criterions" ("criterion_id")[0m
+  ↳ db/migrate/20190411035247_drop_score_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_acourse_criterions_on_course_id" ON "acourse_criterions" ("course_id")[0m
+  ↳ db/migrate/20190411035247_drop_score_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acourse_criterions" ("id","score","course","description","course_id","criterion_id","created_at","updated_at","poor","acceptable","excellent")
+                     SELECT "id","score","course","description","course_id","criterion_id","created_at","updated_at","poor","acceptable","excellent" FROM "course_criterions"[0m
+  ↳ db/migrate/20190411035247_drop_score_column_from_course_criterion.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "course_criterions"[0m
+  ↳ db/migrate/20190411035247_drop_score_column_from_course_criterion.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "course_criterions" ("id" integer NOT NULL PRIMARY KEY, "course" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "course_id" integer DEFAULT NULL, "criterion_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "poor" float DEFAULT NULL, "acceptable" float DEFAULT NULL, "excellent" float DEFAULT NULL)[0m
+  ↳ db/migrate/20190411035247_drop_score_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_course_criterions_on_course_id" ON "course_criterions" ("course_id")[0m
+  ↳ db/migrate/20190411035247_drop_score_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_course_criterions_on_criterion_id" ON "course_criterions" ("criterion_id")[0m
+  ↳ db/migrate/20190411035247_drop_score_column_from_course_criterion.rb:3
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "course_criterions" ("id","course","description","course_id","criterion_id","created_at","updated_at","poor","acceptable","excellent")
+                     SELECT "id","course","description","course_id","criterion_id","created_at","updated_at","poor","acceptable","excellent" FROM "acourse_criterions"[0m
+  ↳ db/migrate/20190411035247_drop_score_column_from_course_criterion.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acourse_criterions"[0m
+  ↳ db/migrate/20190411035247_drop_score_column_from_course_criterion.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190411035247"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to AddReferencesToCourse (20190411041827)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "courses" ADD "faculty_id" integer[0m
+  ↳ db/migrate/20190411041827_add_references_to_course.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_courses_on_faculty_id" ON "courses" ("faculty_id")[0m
+  ↳ db/migrate/20190411041827_add_references_to_course.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190411041827"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to DropCoursesFacultyTable (20190411041915)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "courses_faculties"[0m
+  ↳ db/migrate/20190411041915_drop_courses_faculty_table.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190411041915"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to RemoveColumnFromCourse (20190412052250)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acourses" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "faculty_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190412052250_remove_column_from_course.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_acourses_on_faculty_id" ON "acourses" ("faculty_id")[0m
+  ↳ db/migrate/20190412052250_remove_column_from_course.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acourses" ("id","name","description","created_at","updated_at","faculty_id")
+                     SELECT "id","name","description","created_at","updated_at","faculty_id" FROM "courses"[0m
+  ↳ db/migrate/20190412052250_remove_column_from_course.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "courses"[0m
+  ↳ db/migrate/20190412052250_remove_column_from_course.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "courses" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "faculty_id" integer DEFAULT NULL)[0m
+  ↳ db/migrate/20190412052250_remove_column_from_course.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_courses_on_faculty_id" ON "courses" ("faculty_id")[0m
+  ↳ db/migrate/20190412052250_remove_column_from_course.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "courses" ("id","name","description","created_at","updated_at","faculty_id")
+                     SELECT "id","name","description","created_at","updated_at","faculty_id" FROM "acourses"[0m
+  ↳ db/migrate/20190412052250_remove_column_from_course.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acourses"[0m
+  ↳ db/migrate/20190412052250_remove_column_from_course.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190412052250"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to RemoveColumnFromFaculty (20190412052342)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afaculties" ("id" integer NOT NULL PRIMARY KEY, "fname" varchar DEFAULT NULL, "lname" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "office" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "phone" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190412052342_remove_column_from_faculty.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "afaculties" ("id","fname","lname","title","office","email","phone","created_at","updated_at")
+                     SELECT "id","fname","lname","title","office","email","phone","created_at","updated_at" FROM "faculties"[0m
+  ↳ db/migrate/20190412052342_remove_column_from_faculty.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "faculties"[0m
+  ↳ db/migrate/20190412052342_remove_column_from_faculty.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "faculties" ("id" integer NOT NULL PRIMARY KEY, "fname" varchar DEFAULT NULL, "lname" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "office" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "phone" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190412052342_remove_column_from_faculty.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "faculties" ("id","fname","lname","title","office","email","phone","created_at","updated_at")
+                     SELECT "id","fname","lname","title","office","email","phone","created_at","updated_at" FROM "afaculties"[0m
+  ↳ db/migrate/20190412052342_remove_column_from_faculty.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afaculties"[0m
+  ↳ db/migrate/20190412052342_remove_column_from_faculty.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190412052342"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-09-05 05:49:29.043248"], ["updated_at", "2019-09-05 05:49:29.043248"]]
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Started GET "/" for ::1 at 2019-09-05 00:49:38 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/edreih/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/web-console-3.7.0/lib/web_console/middleware.rb:135
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  ↳ app/views/courses/index.html.erb:16
+  Rendered courses/index.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 2179ms (Views: 2103.0ms | ActiveRecord: 1.3ms)
+
+
