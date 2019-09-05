@@ -1,0 +1,35 @@
+<%#= form_with(model: faculty_course, local: true) do |f| %>
+<%= form_for @faculty_course do |f| %>
+  <% if faculty_course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(faculty_course.errors.count, "error") %> prohibited this faculty_course from being saved:</h2>
+
+      <ul>
+      <% faculty_course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :course_id %>
+    <%= f.collection_select :course_id, Course.all, :id, :name %>
+  </div>
+
+  <div class="field">
+      <%= f.nested_fields_for :faculties, legend: "Faculty " do |ff| %>
+        <%= ff.label :faculty_id, "Name" %>
+        <%= f.collection_select :faculty_id, Faculty.all, :id, :fullname %>
+
+        <button type="button" class="btn btn-danger"><%= ff.remove_nested_fields_link "X" %></button>
+  <% end %>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="btn btn-default"><%= f.add_nested_fields_link :faculties, 'Assign another Faculty Member' %></button>
+
+    <%= f.submit "Submit", :class => 'btn btn-default' %>
+
+  </div>
+<% end %>

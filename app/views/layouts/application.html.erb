@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SemesterProjectEdreih</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand|Ubuntu" rel="stylesheet">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+<!--          <a href="#" class="navbar-brand">Name</a>-->
+        </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Courses", courses_path %></li>
+          <li><%= link_to "Faculty", faculties_path %></li>
+          <li><%= link_to "Faculty Assignments", faculty_courses_path %></li>
+          <li><%= link_to "ABET Criteria", criterions_path %></li>
+          <li><%= link_to "Course Criteria", course_criterions_path %></li>
+          <li><%= link_to "Reports", reports_path %></li>
+          <li><%= link_to "Admin", administrators_path %></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+    <%= yield %>
+    </div>
+
+    <footer class="footer">
+      <div class="container">2019 Edreih Aldana <strong>|</strong> University of Houston</div>
+    </footer>
+  </body>
+</html>

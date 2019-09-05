@@ -1,0 +1,44 @@
+<%= form_with(model: course_criterion, local: true) do |form| %>
+  <% if course_criterion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course_criterion.errors.count, "error") %> prohibited this course_criterion from being saved:</h2>
+
+      <ul>
+      <% course_criterion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :course_id %>
+    <%= form.collection_select :course_id, Course.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :criterion_id %>
+    <%= form.collection_select :criterion_id, Criterion.all, :id, :name_plus_desc %>
+  </div>
+
+  <p>Course Criterion Threshold</p>
+
+  <div class="field">
+    <%= form.label :poor, "Poor" %>
+    <%= form.number_field :poor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :acceptable, "Acceptable" %>
+    <%= form.number_field :acceptable %>
+  </div>
+
+  <div class="field">
+    <%= form.label :excellent, "Excellent" %>
+    <%= form.number_field :excellent %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit", :class => 'btn btn-default' %>
+  </div>
+<% end %>

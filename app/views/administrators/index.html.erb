@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Administrators</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Title</th>
+      <th>Office</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @administrators.each do |administrator| %>
+      <tr>
+        <td><%= administrator.fname %></td>
+        <td><%= administrator.lname %></td>
+        <td><%= administrator.title %></td>
+        <td><%= administrator.office %></td>
+        <td><%= administrator.email %></td>
+        <td><%= administrator.phone %></td>
+        <td><%= link_to 'Show', administrator %></td>
+        <td><%= link_to 'Edit', edit_administrator_path(administrator) %></td>
+        <td><%= link_to 'Destroy', administrator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<button type="button" class="btn btn-default"><%= link_to 'New Administrator', new_administrator_path %></button>

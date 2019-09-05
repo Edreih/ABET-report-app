@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <h1>Faculty</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Title</th>
+          <th>Office</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @faculties.each do |faculty| %>
+          <tr>
+            <td><%= faculty.fname %></td>
+            <td><%= faculty.lname %></td>
+            <td><%= faculty.title %></td>
+            <td><%= faculty.office %></td>
+            <td><%= faculty.email %></td>
+            <td><%= faculty.phone %></td>
+            <td><%= link_to 'Show', faculty %></td>
+            <td><%= link_to 'Edit', edit_faculty_path(faculty) %></td>
+            <td><%= link_to 'Destroy', faculty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <button type="button" class="btn btn-default"><%= link_to 'New Faculty', new_faculty_path %></button>
+  </div>
+
+  <div class="col-md-6">
+    <h1>Import Data (.csv)</h1>
+    <p>Use these controls to import data into the faculty table in .csv format.
+      An example of the correct format for this file can be downloaded <a href="faculty_example.csv" download>here</a>.</p>
+    <p>
+      <%= form_tag import_faculties_path, multipart: true do %>
+        <button class="btn btn-default btn-file">Choose File<%= file_field_tag :file %></button>
+        <%= submit_tag "Import CSV", :class => 'btn btn-default' %>
+      <% end %>
+    </p>
+  </div>
+</div>

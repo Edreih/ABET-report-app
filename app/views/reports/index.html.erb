@@ -1,0 +1,18 @@
+<h1>Reports</h1>
+
+<table>
+  <th>Faculty</th>
+  <th>Courses</th>
+  <% @faculty.each do |f| %>
+    <tr>
+      <td><%= f.fullname %></td>
+      <td><% f.courses.each do |c| %>
+          <%= link_to "#{c.name}", course_reports_path(c.id,f.id) %><br />
+          <% end %>
+      </td>
+      <td>Minimum</td>
+      <td>Maximum</td>
+      <td>Average</td>
+    </tr>
+  <% end %>
+</table>

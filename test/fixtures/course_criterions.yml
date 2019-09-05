@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score: 1.5
+  course: MyString
+  description: MyString
+  criterion_threshold: one
+  course: one
+  criterion: one
+
+two:
+  score: 1.5
+  course: MyString
+  description: MyString
+  criterion_threshold: two
+  course: two
+  criterion: two
